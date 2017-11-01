@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/layout_fram"/>
+    </FrameLayout>
+    <!--android:layout_gravity="start" 左侧划出，end 右侧-->
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/leftSide_bg_color"
+        android:layout_gravity="start"
+        >
+        <include layout="@layout/layout_tab_bar"/>
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
