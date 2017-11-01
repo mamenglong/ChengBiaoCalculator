@@ -14,33 +14,49 @@
         android:background="@color/leftSide_bg_color"
         android:layout_gravity="start">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/leftSide_btn_color"
-            android:text="历史记录"
-            android:textSize="20sp"
-            />
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/fileList">
-            <LinearLayout
+        <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:layout_alignParentTop="true"
+               android:gravity="center"
+               >
+                <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/sc_layout"
-                android:orientation="vertical"
+                android:background="@color/leftSide_btn_color"
+                android:text="历史记录"
+                />
+           </LinearLayout>
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fileList"
+                android:layout_marginTop="55dp"
+                android:layout_marginBottom="55dp"
                 >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sc_layout"
+                    android:orientation="vertical"
+                    >
 
-            </LinearLayout>
-        </ScrollView>
-        <Button
+                </LinearLayout>
+            </ScrollView>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/leftSide_btn_color"
-            android:onClick="contactMe"
-            android:gravity="bottom"
-            android:text="联系我" />
-
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+            <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/leftSide_btn_color"
+                android:onClick="contactMe"
+                android:layout_gravity="bottom"
+                android:text="联系我" />
+        </LinearLayout>
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>

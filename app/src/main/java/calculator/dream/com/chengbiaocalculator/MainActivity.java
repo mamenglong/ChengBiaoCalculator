@@ -36,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private List<Button> btns=null;
     private String[] description=null;
     private List<EditText> editTexts=null;
-    float[] prices=null;
+    private float[] prices=null;
+    private String[] projectNames=null;
     private FileOperate operate;
+    private Initialize initialize;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        //用LayoutInflater加载布局
@@ -48,11 +50,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //初始化资源信息
-        operate=new FileOperate();
+//        initialize=new Initialize(this,View.inflate(this,R.layout.activity_main,null));
+//        operate=new FileOperate(this,View.inflate(this,R.layout.activity_main,null));
         btns= getAllButton();
         description= getDescription();
         editTexts= getAllEditText();
         prices= getPrices();
+//        btns=initialize.getAllButton();
+//        editTexts=initialize.getAllEditText();
+//        description=initialize.getDescription();
+//        prices=initialize.getPrices();
+//        projectNames=initialize.getProjectName();
         //关联控件
         addAll = (Button) findViewById(R.id.addAll);
         clearAll= (Button) findViewById(R.id.clearAll);
@@ -82,12 +90,13 @@ public class MainActivity extends AppCompatActivity {
     /** 按钮addall*/
     public  void countButton(){
         totalCost=0;
-        int[] num= getNum();
+        int[] num=getNum();//new Initialize(this,View.inflate(this,R.layout.activity_main,null)).getNum();
         for(int i=0;i<prices.length;i++)
         {
             totalCost+=prices[i]*num[i];
            // Log.i("total",Float.toString(totalCost));
         }
+
         new  AlertDialog.Builder(MainActivity.this)
                 .setTitle("总价" )
                 .setMessage("总价："+totalCost)
@@ -117,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         try{
                             clearButton();
-                            operate.saveFile(totalCost);
+                            new FileOperate().saveFile(totalCost);
                             Toast toast = Toast.makeText(getApplicationContext(), "保存成功！", Toast.LENGTH_SHORT);
                             toast.show();
                         }
@@ -252,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*获取数量信息*/
         public int[] getNum(){
-            List<EditText> editTexts=getAllEditText();
+           // List<EditText> editTexts= getAllEditText();
             int[] nums=new int[68];
             int i=0;
             for (EditText editText:editTexts
@@ -342,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
             String[] projects=getProjectName();
             int[] nums=getNum();
             for (int i=0;i<68;i++) {
-                string.append(projects[i]+"     "+nums[i]+"个");
+                string.append(projects[i]+"   "+nums[i]+"个\n");
             }
             string.append("总价："+totalCost);
             FileOutputStream outputStream=null;
