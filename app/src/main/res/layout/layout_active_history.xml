@@ -21,10 +21,11 @@
                android:gravity="center"
                >
                 <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/leftSide_btn_color"
-                android:text="历史记录"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/leftSide_btn_color"
+                    android:text="历史记录"
+
                 />
            </LinearLayout>
 
@@ -54,6 +55,7 @@
             <Button android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/leftSide_btn_color"
+
                 android:onClick="contactMe"
                 android:layout_gravity="bottom"
                 android:text="联系我" />
