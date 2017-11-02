@@ -17,6 +17,7 @@ import android.widget.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try{
-                            clearButton();
+                            countButton();
                             new FileOperate().saveFile(totalCost);
                             Toast toast = Toast.makeText(getApplicationContext(), "保存成功！", Toast.LENGTH_SHORT);
                             toast.show();
@@ -348,12 +349,14 @@ public class MainActivity extends AppCompatActivity {
             String filename =getTime()+".txt";
             // String filename ="file.txt";
             StringBuilder string=new StringBuilder();
+            string.append(getFilesDir());
+            string.append("总价："+totalCost+"\r\n");
             String[] projects=getProjectName();
             int[] nums=getNum();
             for (int i=0;i<68;i++) {
                 string.append(projects[i]+"   "+nums[i]+"个\n");
             }
-            string.append("总价："+totalCost);
+
             FileOutputStream outputStream=null;
             BufferedWriter writer=null;
             try{
